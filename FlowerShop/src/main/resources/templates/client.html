@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Flower Shop</title>
+    <link rel="stylesheet" href="/css/client.css">
+</head>
+<body>
+
+<div class="main-content">
+    <h2>Available Flowers</h2>
+    <table class="flower-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="flowerEntry : ${flowers}">
+            <td th:text="${flowerEntry.key.name}"></td>
+            <td th:text="${flowerEntry.key.quantity}"></td>
+            <td th:text="${'$' + flowerEntry.key.price}"></td>
+            <td>
+                <form th:if="${flowerEntry.key.quantity > 0}" th:action="@{/client/buy}" method="post" class="buy-form">
+                    <input type="hidden" name="flowerId" th:value="${flowerEntry.key.id}" />
+                    <input type="number" name="quantity" min="1" max="100" th:value="1" />
+                    <button class="add-to-basket-btn" type="submit">Add</button>
+                </form>
+                <span th:if="${flowerEntry.key.quantity == 0}" class="out-of-stock">Out of Stock</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

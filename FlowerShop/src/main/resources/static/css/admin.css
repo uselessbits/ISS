@@ -1,0 +1,135 @@
+/* admin.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fdf6f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #2a7a5f;
+}
+
+p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.add-flower-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.add-flower-form input[type="text"],
+.add-flower-form input[type="number"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 160px;
+}
+
+.add-flower-form button {
+    padding: 10px 16px;
+    background-color: #2a7a5f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.add-flower-form button:hover {
+    background-color: #256a53;
+}
+
+.flower-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.flower-table th,
+.flower-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.flower-table th {
+    background-color: #e3f2ed;
+    color: #225d4e;
+    font-weight: bold;
+}
+
+.flower-table tr:hover {
+    background-color: #f5fbf8;
+}
+
+.update-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.update-form input[type="number"] {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 80px;
+}
+
+.update-form button {
+    padding: 6px 12px;
+    background-color: #2a7a5f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.update-form button:hover {
+    background-color: #256a53;
+}
+
+.logout-button {
+    background-color: #b04040;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #922f2f;
+}
+
+.error-message {
+    color: #b04040;
+    background-color: #fce4e4;
+    border: 1px solid #f5c2c2;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+}

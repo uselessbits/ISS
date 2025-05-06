@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flower Shop</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div class="main-content">
+    <h2>Flower Inventory</h2>
+    <p>Manage your flower inventory</p>
+
+    <div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+    <form class="add-flower-form" th:action="@{/admin/addFlower}" method="post">
+        <input type="text" name="name" placeholder="Flower Name" required />
+        <input type="number" name="quantity" min="0" placeholder="Quantity" required />
+        <input type="number" name="price" min="0" placeholder="Price" required />
+        <button type="submit">Add Flower</button>
+    </form>
+
+    <table class="flower-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Update</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="flowerEntry : ${flowers}">
+            <td th:text="${flowerEntry.key.name}"></td>
+            <td th:text="${flowerEntry.key.quantity}"></td>
+            <td>
+                <form th:action="@{/admin/changeQuantity}" method="post" class="update-form">
+                    <input type="hidden" name="flowerId" th:value="${flowerEntry.key.id}" />
+                    <input type="number" name="quantity" min="0" max="100" th:value="${flowerEntry.key.quantity}" />
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+            <td th:text="${'$' + flowerEntry.key.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="logout-button">Logout</button>
+    </form>
+</div>
+
+</body>
+</html>
