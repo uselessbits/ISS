@@ -17,8 +17,10 @@ public class FlowerService  {
     @Autowired
     private FlowerRepository flowerRepository;
 
-    public void addFlower(iss.flowershop.model.Flower flower) {
+    public Flower addFlower(String name, float price, int quantity) {
+        Flower flower = new Flower(name, price, quantity);
         flowerRepository.save(flower);
+        return flower;
     }
     public void deleteFlower(int id) {
         flowerRepository.deleteById(id);
@@ -55,11 +57,13 @@ public class FlowerService  {
 
         return result;
     }
-    public void updateFlower(Integer id, int quantity) {
+    public Flower updateFlower(Integer id, int quantity) {
         Flower flower = flowerRepository.findById(id).orElse(null);
         if (flower != null) {
             flower.setQuantity(quantity);
             flowerRepository.save(flower);
+            return flower;
         }
+        return null;
     }
 }

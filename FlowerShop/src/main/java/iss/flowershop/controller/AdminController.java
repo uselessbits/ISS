@@ -37,11 +37,7 @@ public class AdminController {
     }
     @PostMapping("/admin/addFlower")
     public String addFlower(@RequestParam String name, @RequestParam int quantity, @RequestParam float price) {
-        Flower flower = new Flower();
-        flower.setName(name);
-        flower.setQuantity(quantity);
-        flower.setPrice(price);
-        flowerService.addFlower(flower);
+        flowerService.addFlower(name, price, quantity);
         return "redirect:/admin";
     }
 }
