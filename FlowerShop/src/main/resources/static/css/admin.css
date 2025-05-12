@@ -124,12 +124,21 @@ p {
     background-color: #922f2f;
 }
 
-.error-message {
-    color: #b04040;
-    background-color: #fce4e4;
-    border: 1px solid #f5c2c2;
+
+.success-message {
+    background-color: #dff0d8;
+    color: #3c763d;
     padding: 10px;
-    border-radius: 8px;
-    margin: 15px 0;
-    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #d6e9c6;
+}
+
+.error-message {
+    background-color: #f2dede;
+    color: #a94442;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ebccd1;
 }

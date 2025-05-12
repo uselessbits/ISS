@@ -11,6 +11,9 @@
 <body>
 
 <div class="main-content">
+    <div th:if="${success}" class="success-message" th:text="${success}"></div>
+    <div th:if="${error}" class="error-message" th:text="${error}"></div>
+
     <h2>Available Flowers</h2>
     <table class="flower-table">
         <thead>
@@ -37,6 +40,11 @@
         </tr>
         </tbody>
     </table>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="logout-button">Logout</button>
+
+    </form>
+
 </div>
 
 

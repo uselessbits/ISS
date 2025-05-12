@@ -12,6 +12,7 @@
     <h2>Flower Inventory</h2>
     <p>Manage your flower inventory</p>
 
+    <div th:if="${success}" class="success-message" th:text="${success}"></div>
     <div th:if="${error}" class="error-message" th:text="${error}"></div>
 
     <form class="add-flower-form" th:action="@{/admin/addFlower}" method="post">

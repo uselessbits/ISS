@@ -49,7 +49,6 @@ public class FlowerShopApplication {
 
         SpringApplication.run(FlowerShopApplication.class, args);
 
-        System.out.println("Flower Shop Application is running!");
     }
 
 }

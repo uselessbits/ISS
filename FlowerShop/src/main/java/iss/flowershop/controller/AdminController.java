@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AdminController {
@@ -22,11 +23,16 @@ public class AdminController {
         return "admin";
     }
     @PostMapping("/admin/changeQuantity")
-    public String changeFlowerQuantity(@RequestParam int flowerId, @RequestParam int quantity) {
-        if(quantity == 0)
+    public String changeFlowerQuantity(@RequestParam int flowerId, @RequestParam int quantity, Model model, RedirectAttributes redirectAttributes ) {
+        if(quantity == 0){
             flowerService.deleteFlower(flowerId);
-        else
+            redirectAttributes.addFlashAttribute("success", "Flower deleted successfully!");
+        }
+        else{
             flowerService.updateFlower(flowerId, quantity);
+            redirectAttributes.addFlashAttribute("success", "Flower quantity modified successfully!");
+        }
+
         return "redirect:/admin";
     }
     @PostMapping("/admin/addFlower")

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ClientController {
@@ -21,11 +22,14 @@ public class ClientController {
     }
 
     @PostMapping("/client/buy")
-    public String buyFlower(int flowerId, int quantity) {
+    public String buyFlower(int flowerId, int quantity, Model model, RedirectAttributes redirectAttributes) {
         int flowerQty=flowerService.getFlower(flowerId).getQuantity();
-        if(flowerQty < quantity)
+        if(flowerQty < quantity) {
+            redirectAttributes.addFlashAttribute("error", "Not enough flowers in stock!");
             return "redirect:/client";
+        }
         flowerService.updateFlower(flowerId, flowerQty-quantity);
+        redirectAttributes.addFlashAttribute("success", "Flowers added to your basket successfully!");
         return "redirect:/client";
     }
 
